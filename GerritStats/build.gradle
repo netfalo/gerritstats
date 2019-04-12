@@ -1,12 +1,12 @@
 plugins {
-    id 'com.moowork.node' version '0.13'
+    id 'com.moowork.node' version '1.3.1'
 }
 
 // Use a local npm version to avoid any path problems with e.g. Android Studio.
 // Note that npm is not copied into the final output although it's installed
 // as a local module.
 node {
-    npmVersion = '3.10.5'
+    yarnVersion = '1.15.2'
 }
 
 dependencies {
@@ -27,5 +27,5 @@ jar {
     // Include dependencies in JAR file (see http://stackoverflow.com/a/3450409/639421).
     from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
 
-    processResources.dependsOn npmInstall
+    processResources.dependsOn yarn_install
 }
